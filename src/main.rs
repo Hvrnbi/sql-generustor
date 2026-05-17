@@ -1,4 +1,4 @@
-use clap::{Parser, builder::Str};
+use clap::Parser;
 use random_word::Lang;
 use unaccent::unaccent;
 
