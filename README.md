@@ -26,6 +26,15 @@ insert into gens (nom,prénom,taille,mdp) values ('Lake','Michael',0.37070015,'L
 insert into gens (nom,prénom,taille,mdp) values ('Meredith','Mallory',0.0016351843,'JaimeLesPates123');
 ```
 
+### Fonctionnalités
+
+Des données cohérentes sont générées si vos colonnes ont des noms spécifiques (indifféremment de la présence d'accents ou de majuscules) :
+- nom, name, lastname, last name, last-name, last_name -> nom de famille
+- prenom, firstname, first name, first-name, first_name -> prénom
+- motdepasse, mot de passe, mot-de-passe, mot_de_passe, mdp, password, passwd -> mot de passe
+- age -> âge
+- annee, an, year -> année
+
 
 ## 🍵
 
@@ -52,5 +61,14 @@ insert into people (name,firstname,height,password) values ('Haji','Frank',0.924
 insert into people (name,firstname,height,password) values ('Lake','Michael',0.37070015,'LesChaussettesDeLArchiduchesseSontEllesSechesArchiSeches');
 insert into people (name,firstname,height,password) values ('Meredith','Mallory',0.0016351843,'JaimeLesPates123');
 ```
+
+### Features
+
+Consistent data is generated if your columns have specific names (regardless of accents or capitalization):
+- nom, name, lastname, last name, last-name, last_name -> last name
+- prenom, firstname, first name, first-name, first_name -> first name
+- motdepasse, mot de passe, mot-de-passe, mot_de_passe, mdp, password, passwd -> password
+- age -> age
+- annee, an, year -> year
 
 
