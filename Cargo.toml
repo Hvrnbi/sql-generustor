@@ -2,6 +2,14 @@
 name = "sql-generustor"
 version = "0.1.0"
 edition = "2024"
+authors = ["Harupi <hvrupi@proton.me>"]
+license = "MIT"
+description = "A tool to generate SQL insertion commands"
+readme = "README"
+homepage = "https://github.com/Hvrnbi/sql-generustor"
+repository = "https://github.com/Hvrnbi/sql-generustor"
+keywords = ["cli", "sql", "generation", "insert", "insertion"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.6.1", features = ["derive"] }
