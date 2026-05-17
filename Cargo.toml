@@ -1,0 +1,10 @@
+[package]
+name = "sql-generustor"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+fastrand = "2.4.1"
+random_word = { version = "0.5.2", features = ["fr"] }
+unaccent = "0.1.1"
