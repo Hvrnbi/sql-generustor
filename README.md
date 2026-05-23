@@ -35,6 +35,11 @@ Des données cohérentes sont générées si vos colonnes ont des noms spécifiq
 - age -> âge
 - annee, an, year -> année
 
+Il est possible de préciser un intervalle pour les colonnes de type entier ou flottant.
+La syntaxe est la suivante:
+- Pour des entier -> ```intx:y``` avec x et y des entiers relatifs différents
+- Pour des flottants -> ```realx:y``` toujours avec x et y des entiers relatifs différents
+
 
 ## 🍵
 
@@ -71,4 +76,7 @@ Consistent data is generated if your columns have specific names (regardless of 
 - age -> age
 - annee, an, year -> year
 
-
+You can specify a range for columns of integer or floating-point type.
+The syntax is as follows:
+- For integers -> ```intx:y``` with x and y two differents integers
+- Fro floating-point numbers -> ```realx:y``` also with x and y two differents integers

@@ -1,6 +1,6 @@
 [package]
 name = "sql-generustor"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
 authors = ["Harupi <hvrupi@proton.me>"]
 license = "MIT"
@@ -10,6 +10,12 @@ homepage = "https://github.com/Hvrnbi/sql-generustor"
 repository = "https://github.com/Hvrnbi/sql-generustor"
 keywords = ["cli", "sql", "generation", "insert", "insertion"]
 categories = ["command-line-utilities"]
+
+[package.metadata.bundle]
+identifier = "me.harupi.sql-generustor"
+copyright = "MIT License - 2026 Harupi"
+category = "public.app-category.developer-tools"
+linux_use_terminal = true
 
 [dependencies]
 clap = { version = "4.6.1", features = ["derive"] }

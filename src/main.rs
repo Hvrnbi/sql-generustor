@@ -26,7 +26,7 @@ fn main() {
     let types = string_to_vec(&args.types);
 
     // On vérifie si il y a autant de colonnes que de types
-    assert_eq!(colonnes.len(), types.len(), "Il doit y avoir autant de colonnes que de types !");
+    assert_eq!(colonnes.len(), types.len(), "There must be as many types as there are columns.");
 
     let mut res: String = String::new();
 
@@ -64,7 +64,7 @@ fn string_to_vec(ch: &String) -> Vec<String> {
     let chaine = unaccent(ch);
 
     for i in 0..chaine.len() {
-        if chaine.chars().nth(i) != Some(',') {
+        if chaine.chars().nth(i).unwrap() != ',' {
             mot_en_cours.push_str(&String::from(chaine.chars().nth(i).unwrap()));     // On récupère le caractère dans l'option avec unwrap, et on le convertit en Str
         } else {
             vec_res.push(String::from(&mot_en_cours));
@@ -132,20 +132,71 @@ fn generer_valeur(type_valeur: &str, colonne: &str) -> String {
             res.push_str(&fastrand::u32(..).to_string());
         }
 
+    } else if &type_valeur.to_uppercase()[0..3] == "INT" && ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-'].contains(&type_valeur.chars().nth(3).unwrap()) {
+        // On génère des nombres dans l'intervalle donné
+        let nombres: [i16; 2] = trouve_entiers(&type_valeur[3..]);
+
+        let n1: i16 = nombres[0];
+        let n2: i16 = nombres[1];
+
+        res.push_str(&fastrand::i16(n1..n2).to_string());
+        
     } else if [&String::from("REAL"), &String::from("FLOAT"), &String::from("DOUBLE")].contains(&&type_valeur.to_uppercase()) {
         // On chosit un flottant aléatoire
-        res.push_str(&fastrand::f32().to_string());
+        let randint: i16 = fastrand::i16(..);
+        let randfloat: f32 = fastrand::f32() * f32::from(randint);
+        res.push_str(&randfloat.to_string());
 
+    } else if &type_valeur.to_uppercase()[0..4] == "REAL" && ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-'].contains(&type_valeur.chars().nth(4).unwrap()) {
+        // On génère des nombres dans l'intervalle donné
+        let nombres: [i16; 2] = trouve_entiers(&type_valeur[4..]);
+
+        let n1: i16 = nombres[0];
+        let n2: i16 = nombres[1];
+
+        let randint: i16 = fastrand::i16(n1..n2);
+        let randreal: f32 = fastrand::f32() * f32::from(randint);
+
+        res.push_str(&randreal.to_string());
+        
     } else if "NULL" == &type_valeur.to_uppercase() {
         // La valeur NULL
         res.push_str("NULL");
 
     } else if "BOOLEAN" == &type_valeur.to_uppercase() {
         // Une valeur aléatoire entre 0 et 1
-        res.push_str(&fastrand::u8(0..1).to_string());
+        res.push_str(&fastrand::u8(0..2).to_string());
     } else {
         // Gestion du BLOB et du reste, on renvoit un entier
         res.push_str(&fastrand::u32(..).to_string());
+    }
+
+    res
+}
+
+// Trouve les deux nombres dans une chaine de format n1:n2 et les renvoie dans un tableau
+fn trouve_entiers(chaine: &str) -> [i16; 2] {
+    let mut res: [i16; 2] = [-999, 999];
+
+    let mut i: usize = 0;
+    let mut fin: bool = false;
+
+    while i < chaine.len() - 1 && !fin {
+        if chaine.chars().nth(i).unwrap() == ':' {
+            res[0] = chaine[..i].parse().unwrap();
+            res[1] = chaine[i + 1..].parse().unwrap();
+            fin = true;
+        }
+        i += 1;
+    }
+
+    assert_ne!(res[0], res[1], "Both numbers of a range have to be different.");
+
+    // On vérifie si les nombres sont dans l'ordre croissant
+    if res[0] > res[1] {
+        let tmp: i16 = res[0];
+        res[0] = res[1];
+        res[1] = tmp;
     }
 
     res
