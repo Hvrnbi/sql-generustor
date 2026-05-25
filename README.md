@@ -80,3 +80,5 @@ You can specify a range for columns of integer or floating-point type.
 The syntax is as follows:
 - For integers -> ```intx:y``` with x and y two differents integers
 - Fro floating-point numbers -> ```realx:y``` also with x and y two differents integers
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G5J5206K5C)
