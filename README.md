@@ -82,3 +82,4 @@ The syntax is as follows:
 - Fro floating-point numbers -> ```realx:y``` also with x and y two differents integers
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G5J5206K5C)
+[![liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/Harupi/donate)
