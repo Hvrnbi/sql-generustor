@@ -154,8 +154,8 @@ fn generer_valeur(type_valeur: &str, colonne: &str) -> String {
         let n1: i16 = nombres[0];
         let n2: i16 = nombres[1];
 
-        let randint: i16 = fastrand::i16(n1..n2);
-        let randreal: f32 = fastrand::f32() * f32::from(randint);
+        let randint: i16 = fastrand::i16(0..n2 - n1);
+        let randreal: f32 = fastrand::f32() * f32::from(randint) + f32::from(n1);
 
         res.push_str(&randreal.to_string());
         
